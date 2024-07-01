@@ -12,7 +12,7 @@ const products = [
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gradient-to-r from-zinc-900 to-zinc-950 p-5 text-zinc-200">
       <Header/>
       
     </div>
