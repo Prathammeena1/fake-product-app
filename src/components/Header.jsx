@@ -11,7 +11,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex w-[90vw] justify-between items-center py-2 mt-4">
-        <div className="capitalize text-xl font-bold text-zinc-600">Home <span className="text-zinc-300"><i class="ri-arrow-drop-right-line"></i>sneakers </span></div>
+        <div className="capitalize text-xl font-bold text-zinc-600">Home <span className="text-zinc-300"><i className="ri-arrow-drop-right-line"></i>sneakers </span></div>
         <div className=" w-[60%]">
         <input type="text" placeholder="Search..." className="bg-transparent w-full focus:outline-none focus:border-none placeholder:text-zinc-600 placeholder:font-bold text-6xl text-zinc-300 font-medium" />
         </div>
