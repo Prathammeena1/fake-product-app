@@ -7,7 +7,7 @@ const Home = () => {
   const [products, setproducts] = useState([])
 
   const getData = async () =>{
-    const response = await Axios.get('/products?limit=5')
+    const response = await Axios.get('/products?limit=10')
     setproducts(response.data)
   }
   
@@ -17,7 +17,7 @@ const Home = () => {
   
   console.log(products)
   return (
-    <div className='h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg flex gap-4 p-4'>
+    <div className=' main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>
       {products.map((product,i) => <ProductCard key={i} product={product}  />)}
     </div>
   )
