@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white p-4 min-h-[320px] shadow-md w-[23.5%] h-fit bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
+    <div className="bg-white p-4 h-[320px] shadow-md w-[23.5%] cursor-pointer bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
       <div className="h-48 w-[85%] overflow-hidden rounded-lg text-center mx-auto">
         <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
       </div>
