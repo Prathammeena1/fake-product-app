@@ -4,16 +4,16 @@ import { useLocation } from 'react-router-dom'
 
 
 const Home = ({products}) => {
-
-
-
-  const [filteredProducts, setfilteredProducts] = useState([...products])
-
+  const [filteredProducts, setfilteredProducts] = useState([])
   const {search} = useLocation()
-  if(search.trim() != ''){
-    const category = decodeURIComponent(search.split('=')[1])
-    console.log(category)
-  }
+
+  useEffect(() =>{
+    setfilteredProducts(products)
+    if(search.trim() != ''){
+      const category = decodeURIComponent(search.split('=')[1])
+      setfilteredProducts(products.filter(product => product.category === category))
+    }
+  },[search,products])
 
   return (
     <div className=' main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>
