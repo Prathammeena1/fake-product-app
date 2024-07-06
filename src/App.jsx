@@ -1,6 +1,4 @@
-// src/App.js
 import React, { useEffect } from 'react';
-import ProductCard from './components/ProductCard';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
