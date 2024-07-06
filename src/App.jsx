@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import Home from './components/Home';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncGetData } from './components/store/reducers/productReducers';
-
+import MainRouter from './components/Routes/MainRouter';
 
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
       <Header/>
       <div className='flex mt-5 gap-5'>
         <Nav products={products} />
-        <Home products={products} />
+        <MainRouter/>
       </div>
       
     </div>

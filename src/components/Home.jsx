@@ -18,7 +18,6 @@ const Home = ({products}) => {
         const inpSearch = decodeURIComponent(search.split('=')[1])
         setfilteredProducts(products.filter(product => product.title.toLowerCase().includes(inpSearch)));
       }
-      
     }
   },[search,products])
 

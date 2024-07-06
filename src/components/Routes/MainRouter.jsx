@@ -1,13 +1,15 @@
 import React from 'react'
-import { Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+import CreateProduct from '../CreateProduct'
+import Home from '../Home'
 
 const MainRouter = () => {
   return (
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/create" element={<CreateProduct />} />
+        {/* <Route path="/cart" element={<Cart />} /> */}
+        {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   )
 }
