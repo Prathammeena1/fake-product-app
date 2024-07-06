@@ -10,8 +10,15 @@ const Home = ({products}) => {
   useEffect(() =>{
     setfilteredProducts(products)
     if(search.trim() != ''){
-      const category = decodeURIComponent(search.split('=')[1])
-      setfilteredProducts(products.filter(product => product.category === category))
+      if(search.split('=')[0] == '?category'){
+        const category = decodeURIComponent(search.split('=')[1])
+        setfilteredProducts(products.filter(product => product.category === category))
+      }
+      else if(search.split('=')[0] == '?search'){
+        const inpSearch = decodeURIComponent(search.split('=')[1])
+        setfilteredProducts(products.filter(product => product.title.toLowerCase().includes(inpSearch)));
+      }
+      
     }
   },[search,products])
 
