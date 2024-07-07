@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { setData } from './store/slice/productsSlice';
+import { useDispatch } from 'react-redux';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product,products }) => {
+
+  const dispatch = useDispatch()
+  const deleteHandler = ()=>{
+    const filteredProducts = products.filter(p=> p.id !== product.id)
+    dispatch(setData(filteredProducts))
+  }
+
   return (
     <div className="bg-white p-4 min-h-[380px] h-fit shadow-md w-[23.5%] cursor-pointer bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
       <div className="h-48 w-[85%] overflow-hidden rounded-lg text-center mx-auto">
@@ -14,7 +23,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className='flex gap-1 justify-between mt-4'>
       <Link to={`/edit/${product.id}`} className='bg-gradient-to-br from-blue-500 to-blue-950 hover:bg-gradient-to-br hover:from-blue-950 hover:to-blue-500 transition-all ease-in-out text-zinc-200 font-[600] text-xl rounded-md px-7 py-1'>Edit</Link>
-      <Link to='/create' className='bg-gradient-to-br from-red-950 to-red-500 hover:bg-gradient-to-br hover:from-red-500 hover:to-red-950 transition-all ease-in-out text-zinc-200 font-[600] text-xl rounded-md px-7 py-1'>Delete</Link>
+      <button onClick={deleteHandler} className='bg-gradient-to-br from-red-950 to-red-500 hover:bg-gradient-to-br hover:from-red-500 hover:to-red-950 transition-all ease-in-out text-zinc-200 font-[600] text-xl rounded-md px-7 py-1'>Delete</button>
 
       </div>
     </div>

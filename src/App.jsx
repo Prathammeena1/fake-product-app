@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import { useDispatch, useSelector } from 'react-redux';
-import { asyncGetData } from './components/store/reducers/productReducers';
 import MainRouter from './components/Routes/MainRouter';
 
 
