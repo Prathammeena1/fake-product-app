@@ -4,6 +4,7 @@ import CreateProduct from '../CreateProduct'
 import Home from '../Home'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncGetData } from '../store/reducers/productReducers'
+import EditProduct from '../EditProduct'
 
 const MainRouter = () => {
 
@@ -21,6 +22,7 @@ const MainRouter = () => {
     <Routes>
         <Route path="/" element={<Home products={products} />} />
         <Route path="/create" element={<CreateProduct products={products} />} />
+        <Route path="/edit/:id" element={<EditProduct products={products} />} />
         {/* <Route path="/cart" element={<Cart />} /> */}
         {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>

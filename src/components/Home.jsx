@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
 import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { asyncGetData } from './store/reducers/productReducers'
 
 
-const Home = ({products}) => {
+const Home = () => {
   const [filteredProducts, setfilteredProducts] = useState([])
   const {search} = useLocation()
+
+  const dispatch = useDispatch()
+  const {products} = useSelector(state => state.productsSlice)
+  useEffect(() => {
+    dispatch(asyncGetData())
+  },[])
+
+
+
 
   useEffect(() =>{
     setfilteredProducts(products)

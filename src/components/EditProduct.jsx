@@ -1,18 +1,25 @@
-import { nanoid } from "nanoid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setData } from "./store/reducers/productReducers";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CreateProduct = ({ products }) => {
+const EditProduct = ({ products }) => {
+  const { id } = useParams();
   const [product, setProduct] = useState({
     title: "",
     category: "",
     price: "",
     description: "",
     image: "",
-    id: nanoid(), // Generate ID only once
+    id: "",
   });
+
+  useEffect(() => {
+    const productToEdit = products.find((product) => product.id == id);
+    if (productToEdit) {
+      setProduct(productToEdit);
+    }
+  }, [id, products]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,20 +31,20 @@ const CreateProduct = ({ products }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Product created:", product);
-    dispatch(setData([...products, product]));
+    const updatedProducts = products.map((p) =>
+      p.id == product.id ? product : p
+    );
+    dispatch(setData(updatedProducts));
     navigate('/')
+
   };
 
   return (
     <div className="main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 py-2 flex gap-4 items-center justify-center flex-wrap overflow-y-auto">
       <div className="w-full max-w-md bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg shadow-md p-8 py-4 text-zinc-200">
-        <h2 className="text-2xl font-bold mb-6 text-center">
-          Create a New Product
-        </h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Edit Product</h2>
         <form onSubmit={handleSubmit} className="space-y-2">
           <div>
             <label htmlFor="title" className="block text-sm font-medium">
@@ -113,7 +120,7 @@ const CreateProduct = ({ products }) => {
               type="submit"
               className="w-full flex justify-center py-1 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Create Product
+              Update Product
             </button>
           </div>
         </form>
@@ -122,4 +129,4 @@ const CreateProduct = ({ products }) => {
   );
 };
 
-export default CreateProduct;
+export default EditProduct;

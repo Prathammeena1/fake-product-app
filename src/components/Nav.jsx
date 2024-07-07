@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { asyncGetData } from './store/reducers/productReducers'
 
-const Nav = ({products}) => {
+const Nav = () => {
+
+
+  const dispatch = useDispatch()
+  const {products} = useSelector(state => state.productsSlice)
+  useEffect(() => {
+    dispatch(asyncGetData())
+  },[])
 
   var obj = {}
   products.forEach(product =>{
