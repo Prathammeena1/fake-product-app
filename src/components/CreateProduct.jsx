@@ -1,48 +1,75 @@
-import React, { useState } from 'react';
+import { nanoid } from "nanoid";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setData } from "./store/reducers/productReducers";
 
-const CreateProduct = () => {
+const CreateProduct = ({ products }) => {
   const [product, setProduct] = useState({
-    name: '',
-    category: '',
-    price: '',
-    description: ''
+    title: "",
+    category: "",
+    price: "",
+    description: "",
+    image: "",
+    id: nanoid(), // Generate ID only once
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct({
-      ...product,
-      [name]: value
-    });
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
   };
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to the server)
-    console.log('Product created:', product);
+    console.log("Product created:", product);
+
+    // Dispatch the product data
+    dispatch(setData([...products, product]));
   };
 
   return (
-
-    <div className=' main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 items-center justify-center flex-wrap overflow-y-auto'>
-
-    <div className="w-full max-w-md bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg shadow-md p-8 text-zinc-200">
-        <h2 className="text-2xl font-bold mb-6 text-center ">Create a New Product</h2>
+    <div className="main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 py-2 flex gap-4 items-center justify-center flex-wrap overflow-y-auto">
+      <div className="w-full max-w-md bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg shadow-md p-8 py-4 text-zinc-200">
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Create a New Product
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-2">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium">Product Title</label>
+            <label htmlFor="title" className="block text-sm font-medium">
+              Product Title
+            </label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={product.name}
+              id="title"
+              name="title"
+              value={product.title}
               onChange={handleChange}
               className="mt-1 block w-full text-zinc-200 bg-transparent px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
           <div>
-            <label htmlFor="category" className="block text-sm font-medium">Category</label>
+            <label htmlFor="image" className="block text-sm font-medium">
+              Product Image Url
+            </label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              value={product.image}
+              onChange={handleChange}
+              className="mt-1 block w-full text-zinc-200 bg-transparent px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="category" className="block text-sm font-medium">
+              Category
+            </label>
             <input
               type="text"
               id="category"
@@ -54,7 +81,9 @@ const CreateProduct = () => {
             />
           </div>
           <div>
-            <label htmlFor="price" className="block text-sm font-medium">Price ($) </label>
+            <label htmlFor="price" className="block text-sm font-medium">
+              Price ($)
+            </label>
             <input
               type="number"
               id="price"
@@ -66,7 +95,9 @@ const CreateProduct = () => {
             />
           </div>
           <div>
-            <label htmlFor="description" className="block text-sm font-medium">Description</label>
+            <label htmlFor="description" className="block text-sm font-medium">
+              Description
+            </label>
             <textarea
               id="description"
               name="description"
@@ -87,8 +118,6 @@ const CreateProduct = () => {
         </form>
       </div>
     </div>
-
-    
   );
 };
 
