@@ -14,7 +14,7 @@ export const productsSlice = createSlice({
         localStorage.setItem('products', JSON.stringify(action.payload))
     },
     set : (state,action) =>{
-        state.products = JSON.parse(localStorage.getItem('products'));
+        state.products = JSON.parse(localStorage.getItem('products')) || [];
     },
   },
 })

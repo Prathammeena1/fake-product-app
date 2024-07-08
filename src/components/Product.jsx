@@ -1,38 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { setData } from "./store/slice/productsSlice";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams,Link, useNavigate } from 'react-router-dom'
+import { setData } from './store/slice/productsSlice'
 
-const ProductCard = ({ product, products }) => {
-  const dispatch = useDispatch();
+const Product = ({products}) => {
+
+  const [product, setproduct] = useState(null)
+  const {id} = useParams()
+  
+  useEffect(() => {
+    setproduct(products.find(p => p.id == id))
+  }, [products])
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const deleteHandler = () => {
     const filteredProducts = products.filter((p) => p.id !== product.id);
     dispatch(setData(filteredProducts));
+    navigate('/')
   };
 
+
   return (
-    <div className="p-4 min-h-[380px] h-fit shadow-md w-[23.5%] cursor-pointer bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
-      <Link to={`/product/${product.id}`} >
-      <div className="h-48 w-[85%] overflow-hidden rounded-lg text-center mx-auto">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-full h-full object-cover"
-        />
+    <div className='main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>
+      {product ? <div className='flex gap-2 overflow-hidden'>
+      <div className="left w-[50%] rounded-md overflow-hidden">
+        <img src={product.image} className='h-full w-full object-cover' alt="" />
       </div>
-      <div className="mt-4">
-        <h3 className="text-sm font-bold">
-          {product.title.split(" ").slice(0, 3).join(" ") + "..."}
-        </h3>
-        <span className="text-gray-100 text-xl font-semibold">
-          ${product.price}
-        </span>
-        <p className="text-gray-500 text-xs">
-          {product.description.split(" ").slice(0, 3).join(" ") + "..."}
-        </p>
-      </div>
-      </Link>
-      <div className="flex gap-1 justify-between mt-4">
+      <div className="right">
+        <h1>name</h1>
+        <h1>price</h1>
+        <h1>description</h1>
+        <div className="flex gap-1 justify-between mt-4">
         <Link
           to={`/edit/${product.id}`}
           className=""
@@ -47,8 +46,10 @@ const ProductCard = ({ product, products }) => {
   Delete
 </button>
       </div>
+      </div>
+      </div> : <h1>Loading...</h1> }
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default Product
