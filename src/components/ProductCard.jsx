@@ -2,12 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { setData } from "./store/slice/productsSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product, products }) => {
   const dispatch = useDispatch();
   const deleteHandler = () => {
     const filteredProducts = products.filter((p) => p.id !== product.id);
     dispatch(setData(filteredProducts));
+    toast.success('Product Delete Successfully!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (

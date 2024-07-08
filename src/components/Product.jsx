@@ -23,7 +23,7 @@ const Product = ({ products }) => {
     <div className="main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto">
       {product ? (
         <div className="flex gap-8 overflow-hidden items-center justify-center">
-          <div className="left w-[30%] h-fit rounded-md overflow-hidden">
+          <div className="left w-[30%] max-h-[55vh] h-fit rounded-md overflow-hidden">
             <img
               src={product.image}
               className="h-full w-full object-cover"
