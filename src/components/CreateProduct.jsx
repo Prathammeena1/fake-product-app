@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setData } from "./store/reducers/productReducers";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CreateProduct = ({ products }) => {
   const [product, setProduct] = useState({
@@ -30,6 +31,7 @@ const CreateProduct = ({ products }) => {
     console.log("Product created:", product);
     dispatch(setData([...products, product]));
     navigate('/')
+    toast.success('Product created successfully!')
   };
 
   return (

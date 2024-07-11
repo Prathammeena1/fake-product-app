@@ -19,7 +19,6 @@ const Home = () => {
   useEffect(() => {
     if (products.length > 0) {
       setFilteredProducts(products);
-
       if (search.trim() !== '') {
         const searchParams = new URLSearchParams(search);
         if (searchParams.has('category')) {
@@ -31,7 +30,7 @@ const Home = () => {
         }
       }
     }
-  }, [search, products]);
+  }, [search, products,filteredProducts]);
 
   return (
     <div className='main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>

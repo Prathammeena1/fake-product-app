@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setData } from "./store/reducers/productReducers";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditProduct = ({ products }) => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const EditProduct = ({ products }) => {
     );
     dispatch(setData(updatedProducts));
     navigate('/')
-
+    toast.success('Product Updated Successfully!');
   };
 
   return (
