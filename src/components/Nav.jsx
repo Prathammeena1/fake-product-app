@@ -23,7 +23,7 @@ const Nav = () => {
 
 
   return (
-    <div className='h-[65vh] w-[20vw] bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg text-center pt-8'>
+    <div className=' hidden md:block  h-[65vh] w-[20vw] bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg text-center pt-8'>
         <Link to='/create' className='bg-gradient-to-br from-zinc-400 to-zinc-100 hover:bg-gradient-to-br hover:from-zinc-100 hover:to-zinc-400 transition-all ease-in-out text-zinc-800 font-[600] text-xl rounded-md px-4 py-1'>Add new product</Link>
         <div key={1} className='flex flex-col w-fit ml-10 mt-5'>
             <h1 className='text-xl mb-3'>Category</h1>

@@ -13,9 +13,9 @@ const ProductCard = ({ product, products }) => {
   };
 
   return (
-    <div className="p-4 min-h-[380px] h-fit shadow-md w-[23.5%] cursor-pointer bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
+    <div className="p-4 md:min-h-[380px] h-fit shadow-md md:w-[23.5%] w-[100%] cursor-pointer bg-gradient-to-tl from-zinc-900 to-zinc-800 rounded-lg flex-shrink-0">
       <Link to={`/product/${product.id}`}>
-        <div className="h-48 w-[85%] overflow-hidden rounded-lg text-center mx-auto">
+        <div className="md:h-48 md:w-[85%] max-w-[60%] h-24 overflow-hidden rounded-lg text-center mx-auto">
           <img
             src={product.image}
             alt={product.title}
