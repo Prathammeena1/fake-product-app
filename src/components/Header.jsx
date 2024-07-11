@@ -31,7 +31,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex w-[90vw] justify-between items-center py-2 mt-4">
-        <div className="capitalize text-xl font-bold text-zinc-600">
+        <div className="capitalize md:text-xl text-sm font-bold text-zinc-600">
           {category.trim() == "" ? (
             <Link className="text-zinc-300" to="/">
               Home
@@ -53,7 +53,7 @@ const Header = () => {
               onChange={(e) => setinpSearch(e.target.value)}
               type="text"
               placeholder="Search..."
-              className="bg-transparent w-full focus:outline-none focus:border-none placeholder:text-zinc-600 placeholder:font-bold text-6xl text-zinc-300 font-medium"
+              className="bg-transparent md:w-full focus:outline-none focus:border-none placeholder:text-zinc-600 placeholder:font-bold md:text-6xl text-zinc-300 font-medium"
             />
           </form>
         </div>
