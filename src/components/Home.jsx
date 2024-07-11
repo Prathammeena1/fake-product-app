@@ -33,7 +33,7 @@ const Home = () => {
   }, [search, products,filteredProducts]);
 
   return (
-    <div className='main md:h-[65vh] md:w-[78vw] h-[70vh] w-full  bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>
+    <div className='main md:h-[65vh] md:w-[78vw] h-[70vh] w-full bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 flex gap-4 flex-wrap overflow-y-auto'>
       {filteredProducts.length > 0 ? (
         filteredProducts.map((product, i) => <ProductCard key={product.id} product={product} products={products} />)
       ) : (
