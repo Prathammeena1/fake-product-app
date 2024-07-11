@@ -35,7 +35,7 @@ const CreateProduct = ({ products }) => {
   };
 
   return (
-    <div className="main h-[65vh] w-[78vw] bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 py-2 flex gap-4 items-center justify-center flex-wrap overflow-y-auto">
+    <div className="main md:h-[65vh] md:w-[78vw] h-[70vh] w-full  bg-gradient-to-tl from-zinc-600 to-zinc-800 rounded-lg p-4 py-2 flex gap-4 items-center justify-center flex-wrap overflow-y-auto">
       <div className="w-full max-w-md bg-gradient-to-tl from-zinc-800 to-zinc-700 rounded-lg shadow-md p-8 py-4 text-zinc-200">
         <h2 className="text-2xl font-bold mb-6 text-center">
           Create a New Product
