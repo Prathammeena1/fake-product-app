@@ -40,7 +40,7 @@ const Nav = () => {
             {categories.length > 0 ? categories.map((category,i) => <div key={i} className="cat1 flex items-center gap-3 ml-2 text-sm">
                 <div className="square h-3 w-3 bg-zinc-400 rounded-sm"></div>
                 <Link to={`/?category=${category}`}  className='w-fit capitalize'>{category}</Link>
-            </div> ) : <div>No categories </div> }
+            </div> ) : <div className='w-fit'>No categories </div> }
         </div>
     </div>
   )
