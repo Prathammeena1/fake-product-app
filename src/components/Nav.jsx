@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { asyncGetData } from './store/reducers/productReducers'
@@ -8,9 +8,11 @@ const Nav = () => {
 
 
   const dispatch = useDispatch()
+  const [categories, setcategories] = useState([])
   const {products} = useSelector(state => state.productsSlice)
   useEffect(() => {
     dispatch(asyncGetData())
+    setcategories(Object.keys(obj))
   },[])
 
   var obj = {}
@@ -20,13 +22,13 @@ const Nav = () => {
     }
   })
 
-  const categories = Object.keys(obj)
 
   const closeNav = ()=>{ 
     gsap.to('.nav',{
       top:'-100%'
   })
 }
+
 
 
   return (
