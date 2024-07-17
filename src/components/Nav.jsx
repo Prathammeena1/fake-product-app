@@ -13,7 +13,7 @@ const Nav = () => {
   useEffect(() => {
     dispatch(asyncGetData())
     setcategories(Object.keys(obj))
-  },[])
+  },[categories])
 
   var obj = {}
   products.forEach(product =>{
@@ -21,6 +21,7 @@ const Nav = () => {
       obj[product.category] = product.category
     }
   })
+
 
 
   const closeNav = ()=>{ 
